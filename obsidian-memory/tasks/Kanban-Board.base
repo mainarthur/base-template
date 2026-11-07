@@ -1,0 +1,33 @@
+filters:
+  and:
+    - file.hasProperty("status")
+formulas:
+  days: (now() - file.ctime).days
+views:
+  - type: kanban
+    name: Main
+    groupBy:
+      property: status
+      direction: ASC
+    groupOrder:
+      - Epic (Vision)
+      - Backlog (Ideas)
+      - Up next (Pull)
+      - Doing (In progress)
+      - Done
+      - Archive
+    order:
+      - priority
+      - epic
+      - formula.days
+      - file.mtime
+  - type: table
+    name: All Tasks
+    order:
+      - file.name
+      - status
+      - priority
+      - epic
+      - formula.days
+      - file.mtime
+

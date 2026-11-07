@@ -1,7 +1,7 @@
 {
-	"name": "obsidian-sample-plugin",
+	"name": "base-template",
 	"version": "1.0.0",
-	"description": "This is a sample plugin for Obsidian (https://obsidian.md)",
+	"description": "This plugin allows you to select a template note for your obsidian base views",
 	"main": "main.js",
 	"type": "module",
 	"scripts": {

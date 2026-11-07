@@ -1,11 +1,10 @@
 {
-	"id": "sample-plugin",
-	"name": "Sample Plugin",
+	"id": "base-template",
+	"name": "Base Template",
 	"version": "1.0.0",
-	"minAppVersion": "1.0.0",
-	"description": "Demonstrates some of the capabilities of the Obsidian API.",
-	"author": "Obsidian",
-	"authorUrl": "https://obsidian.md",
-	"fundingUrl": "https://obsidian.md/pricing",
+	"minAppVersion": "1.10.0",
+	"description": "This plugin allows you to select a template note for your obsidian base views",
+	"author": "Artur Kh",
+	"authorUrl": "https://github.com/mainarthur",
 	"isDesktopOnly": false
 }
