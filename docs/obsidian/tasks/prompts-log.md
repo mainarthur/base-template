@@ -1,5 +1,18 @@
 # Prompts & Execution Log
 
+## 2026-11-12 — Version Bump to 1.0.1
+
+- **Prompt Summary:** Bump version of the app to 1.0.1.
+- **Key Decisions:**
+  - Synchronized version across `package.json`, `package-lock.json`, `manifest.json`, and `versions.json`.
+  - Created and pushed git tag `1.0.1` to trigger automated release workflow.
+- **Files Modified/Created:**
+  - `package.json` [MODIFIED]
+  - `package-lock.json` [MODIFIED]
+  - `manifest.json` [MODIFIED]
+  - `versions.json` [MODIFIED]
+- **Verification:** `npm run lint` and `npm run build` passed with 0 errors.
+
 ## 2026-11-12 — Type-Safe Obsidian Template Engine Integration
 
 - **Prompt Summary:** Fix `@typescript-eslint` unsafe warnings in `src/template-engine.ts` and integrate with Obsidian's core template engine settings and Templater.
