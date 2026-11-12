@@ -1,92 +1,107 @@
-# Obsidian Sample Plugin
+# Base Template
 
-This is a sample plugin for Obsidian (https://obsidian.md).
+Configure template notes for Obsidian Base views and automatically populate newly created items with rendered template bodies, variable substitutions, and merged frontmatter.
 
-This project uses TypeScript to provide type checking and documentation.
-The repo depends on the latest plugin API (obsidian.d.ts) in TypeScript Definition format, which contains TSDoc comments describing what it does.
+[![GitHub Release](https://img.shields.io/github/v/release/mainarthur/base-template?include_prereleases&color=7c3aed)](https://github.com/mainarthur/base-template/releases)
+[![License](https://img.shields.io/github/license/mainarthur/base-template?color=blue)](LICENSE)
 
-This sample plugin demonstrates some of the basic functionality the plugin API can do.
+---
 
-- Adds a ribbon icon, which shows a Notice when clicked.
-- Adds a command "Open modal (simple)" which opens a Modal.
-- Adds a plugin setting tab to the settings page.
-- Registers a global click event and outputs a Notice on click.
-- Registers a global interval which logs 'setInterval' to the console.
+## Features
 
-## First time developing plugins?
+- 📑 **Per-View Template Configuration**: Assign a specific template note to any Base view layout (Table, Kanban, Cards, List, or custom view types).
+- 🔘 **Seamless Creation Workflow**: Overrides the toolbar **New** button, the `+` button at the bottom of Kanban columns, and the `Bases: Add item` command to create notes using your selected template.
+- 🪄 **Dynamic Variable Replacement**: Supports `{{title}}`, `{{date}}`, `{{time}}`, and custom date/time formats (e.g., `{{date:YYYY-MM-DD}}`, `{{time:HH:mm}}`).
+- 🧩 **Smart Frontmatter Merging**:
+  - Preserves template frontmatter defaults when table columns are empty.
+  - Automatically applies non-null view filter values (e.g. `status: In Progress`).
+  - Merges and deduplicates `tags` arrays across the template and view filters.
+  - Applies Kanban group/column properties on top when clicking `+` in a specific column.
+- 🎯 **Target Folder Resolution**: Places new notes in the Base filter folder or the vault default new note location (not in the template's folder).
+- ⚡ **Zero Global Configuration**: Configuration lives directly inside your `.base` files per view. No extra global settings needed.
 
-Quick starting guide for new plugin devs:
+---
 
-- Check if [someone already developed a plugin for what you want](https://obsidian.md/plugins)! There might be an existing plugin similar enough that you can partner up with.
-- Make a copy of this repo as a template with the "Use this template" button (login to GitHub if you don't see it).
-- Clone your repo to a local development folder. For convenience, you can place this folder in your `.obsidian/plugins/your-plugin-name` folder.
-- Install NodeJS, then run `npm i` in the command line under your repo folder.
-- Run `npm run dev` to compile your plugin from `src/main.ts` to `main.js`.
-- Make changes to `src/main.ts` (or create new `.ts` files). Those changes should be automatically compiled into `main.js`.
-- Reload Obsidian to load the new version of your plugin.
-- Enable plugin in settings window.
-- For updates to the Obsidian API run `npm update` in the command line under your repo folder.
+## Installation
 
-## Releasing new releases
+### From Community Plugins (Recommended)
 
-- Update your `manifest.json` with your new version number, such as `1.0.1`, and the minimum Obsidian version required for your latest release.
-- Update your `versions.json` file with `"new-plugin-version": "minimum-obsidian-version"` so older versions of Obsidian can download an older version of your plugin that's compatible.
-- Create new GitHub release using your new version number as the "Tag version". Use the exact version number, don't include a prefix `v`. See here for an example: https://github.com/obsidianmd/obsidian-sample-plugin/releases
-- Upload the files `manifest.json`, `main.js`, `styles.css` as binary attachments. Note: The manifest.json file must be in two places, first the root path of your repository and also in the release.
-- Publish the release.
+1. In Obsidian, open **Settings → Community plugins**.
+2. Turn on Community plugins if disabled.
+3. Click **Browse** and search for **Base Template**.
+4. Click **Install**, then **Enable**.
 
-> You can simplify the version bump process by running `npm version patch`, `npm version minor` or `npm version major` after updating `minAppVersion` manually in `manifest.json`.
-> The command will bump version in `manifest.json` and `package.json`, and add the entry for the new version to `versions.json`
+### Manual Installation
 
-## Adding your plugin to the community plugin list
+1. Download `main.js` and `manifest.json` from the [latest release](https://github.com/mainarthur/base-template/releases/latest).
+2. Create a folder in your vault: `<vault>/.obsidian/plugins/base-template/`.
+3. Copy `main.js` and `manifest.json` into that folder.
+4. Reload Obsidian and enable **Base Template** in **Settings → Community plugins**.
 
-- Check the [plugin guidelines](https://docs.obsidian.md/Plugins/Releasing/Plugin+guidelines).
-- Publish an initial version.
-- Make sure you have a `README.md` file in the root of your repo.
-- Make a pull request at https://github.com/obsidianmd/obsidian-releases to add your plugin.
+---
 
-## How to use
+## Usage
 
-- Clone this repo.
-- Make sure your NodeJS is at least v18 (`node --version`).
-- `npm i` to install dependencies.
-- `npm run dev` to start compilation in watch mode.
+### 1. Assigning a Template to a Base View
 
-## Manually installing the plugin
+1. Open any `.base` file or a note containing an embedded base (`![[MyBase.base]]`).
+2. Click the view switcher icon in the toolbar, then select **Configure view** (or right-click the active view tab).
+3. Scroll down in the view configuration menu to the **Template** setting.
+4. Select any Markdown note in your vault to act as the template for this view.
 
-- Copy over `main.js`, `styles.css`, `manifest.json` to your vault `VaultFolder/.obsidian/plugins/your-plugin-id/`.
+### 2. Creating New Items
 
-## Improve code quality with eslint
+- Click the **New** button in the Base toolbar.
+- Or click the `+` button at the bottom of any column in a Kanban Base view.
+- Or trigger the `Bases: Add item` command from the Command Palette (`Ctrl/Cmd + P`).
 
-- [ESLint](https://eslint.org/) is a tool that analyzes your code to quickly find problems. You can run ESLint against your plugin to find common bugs and ways to improve your code.
-- This project already has eslint preconfigured, you can invoke a check by running`npm run lint`
-- Together with a custom eslint [plugin](https://github.com/obsidianmd/eslint-plugin) for Obsidan specific code guidelines.
-- A GitHub action is preconfigured to automatically lint every commit on all branches.
+The new note will be created with the template's content, formatted variables, and merged frontmatter properties.
 
-## Funding URL
+---
 
-You can include funding URLs where people who use your plugin can financially support it.
+## Template Syntax Reference
 
-The simple way is to set the `fundingUrl` field to your link in your `manifest.json` file:
+The plugin supports standard template placeholders in both frontmatter and note body:
 
-```json
-{
-	"fundingUrl": "https://buymeacoffee.com"
-}
-```
+| Placeholder | Description | Example Output |
+| :--- | :--- | :--- |
+| `{{title}}` | The basename / title of the created file | `My Project Task` |
+| `{{date}}` | Current date (`YYYY-MM-DD`) | `2026-11-12` |
+| `{{date:FORMAT}}` | Current date with custom format | `{{date:dddd, MMMM Do YYYY}}` → `Thursday, November 12th 2026` |
+| `{{time}}` | Current time (`HH:mm`) | `14:30` |
+| `{{time:FORMAT}}` | Current time with custom format | `{{time:HH:mm:ss}}` → `14:30:45` |
 
-If you have multiple URLs, you can also do:
+### Example Template Note (`Templates/Project-Task.md`)
 
-```json
-{
-	"fundingUrl": {
-		"Buy Me a Coffee": "https://buymeacoffee.com",
-		"GitHub Sponsor": "https://github.com/sponsors",
-		"Patreon": "https://www.patreon.com/"
-	}
-}
-```
+````markdown
+---
+status: Backlog
+priority: Normal
+tags:
+  - task
+  - project
+---
+# {{title}}
 
-## API Documentation
+Created on {{date:YYYY-MM-DD}} at {{time}}.
 
-See https://docs.obsidian.md
+## Objectives
+- [ ] Initial planning
+- [ ] Implementation
+- [ ] Review
+````
+
+When created from a Base view filtered to `status: In Progress`, the new note's `status` will automatically be set to `In Progress` while keeping `priority: Normal`, merging tags, and replacing `{{title}}` and `{{date}}`.
+
+---
+
+## Compatibility
+
+- Requires Obsidian **v1.10.0** or later with the core **Bases** plugin enabled.
+- Fully compatible with desktop and mobile (iOS and Android).
+
+---
+
+## License
+
+MIT / 0-BSD License — see [LICENSE](LICENSE) for details.

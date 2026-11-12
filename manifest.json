@@ -3,7 +3,7 @@
 	"name": "Base Template",
 	"version": "1.0.0",
 	"minAppVersion": "1.10.0",
-	"description": "This plugin allows you to select a template note for your obsidian base views",
+	"description": "Select template notes for Base views and automatically populate new items with merged frontmatter and variables.",
 	"author": "Artur Kh",
 	"authorUrl": "https://github.com/mainarthur",
 	"isDesktopOnly": false
