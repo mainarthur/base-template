@@ -31,3 +31,4 @@ Chosen option: **Option 1**, because:
 ### Consequences
 - Good: Fully type-safe and compliant with GitHub CI / CodeQL / ESLint strict rules.
 - Good: Seamless user experience matching Obsidian's native template behavior.
+

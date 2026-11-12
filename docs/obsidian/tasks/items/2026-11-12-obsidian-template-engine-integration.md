@@ -21,3 +21,4 @@ Resolve `@typescript-eslint` unsafe typing warnings in `src/template-engine.ts` 
 - [x] Added `applyTemplateEngine` with fallback support for Templater (`templater-obsidian`).
 - [x] Added `ADR-003` to memdoc decision registry and updated `prompts-log.md`.
 - [x] Verified `npm run lint` and `npm run build` with 0 errors and 0 warnings.
+
