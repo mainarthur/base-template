@@ -14,8 +14,9 @@ import {
 	InternalBasesPlugin,
 } from './types';
 import {
+	applyTemplateEngine,
+	getObsidianTemplateOptions,
 	mergeFrontmatter,
-	renderTemplateVariables,
 	resolveTemplateFile,
 } from './template-engine';
 
@@ -215,13 +216,20 @@ export class BasesPatcher {
 				query.newItemTemplate = undefined;
 			}
 
+			const templateOptions = getObsidianTemplateOptions(self.app);
+
 			// Intercept createNewFile to populate with rendered template
 			fileManager.createNewFile = async function (...args: Parameters<FileManagerInternal['createNewFile']>) {
 				const created = await origCreateNewFile.apply(fileManager, args);
 
 				if (created instanceof TFile) {
 					try {
-						const rendered = renderTemplateVariables(templateRaw, created.basename);
+						const rendered = await applyTemplateEngine(
+							self.app,
+							created,
+							templateRaw,
+							templateOptions,
+						);
 						await self.app.vault.modify(created, rendered);
 					} catch (modifyErr) {
 						console.error('Base Template: failed to populate template content', modifyErr);

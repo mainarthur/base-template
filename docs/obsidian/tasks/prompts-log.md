@@ -1,5 +1,22 @@
 # Prompts & Execution Log
 
+## 2026-11-12 — Type-Safe Obsidian Template Engine Integration
+
+- **Prompt Summary:** Fix `@typescript-eslint` unsafe warnings in `src/template-engine.ts` and integrate with Obsidian's core template engine settings and Templater.
+- **Key Decisions:**
+  - Introduced type-safe `MomentCreator` and `MomentInstance` interfaces (ADR-003).
+  - Wired date/time format resolution to Obsidian's core `templates` plugin options (`dateFormat`, `timeFormat`).
+  - Added support for Obsidian's configured template folder location in `resolveTemplateFile`.
+  - Added support for Templater (`templater-obsidian`) in `applyTemplateEngine`.
+- **Files Modified/Created:**
+  - `src/types.ts` [MODIFIED]
+  - `src/template-engine.ts` [MODIFIED]
+  - `src/bases-patch.ts` [MODIFIED]
+  - `docs/obsidian/docs/decisions/ADR-003-obsidian-template-engine-integration.md` [NEW]
+  - `docs/obsidian/docs/Decisions.md` [MODIFIED]
+  - `docs/obsidian/tasks/items/2026-11-12-obsidian-template-engine-integration.md` [NEW]
+- **Verification:** ESLint type checks, `npm run build`, and unit tests.
+
 ## 2026-11-12 — Release Initialization for Obsidian Community Directory
 
 - **Prompt Summary:** Prepare plugin repository for community release (`https://community.obsidian.md/`), migrate memdoc to `docs/obsidian/`, and establish 1.0.0 release readiness.

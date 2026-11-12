@@ -62,3 +62,25 @@ export interface BasesNewItemMenu extends Component {
 		frontmatterProcessor?: (frontmatter: Record<string, unknown>, file: TFile) => void,
 	): Promise<void>;
 }
+
+export interface InternalTemplatesPlugin {
+	options?: {
+		folder?: string;
+		dateFormat?: string;
+		timeFormat?: string;
+	};
+}
+
+export interface TemplateEngineOptions {
+	dateFormat?: string;
+	timeFormat?: string;
+}
+
+export interface TemplaterPlugin {
+	templater?: {
+		parse_template?: (
+			opt: { target_file: TFile; run_mode: number },
+			content: string,
+		) => Promise<string>;
+	};
+}
