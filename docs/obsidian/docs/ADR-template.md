@@ -37,3 +37,4 @@ Chosen option: "Option 1", because [justification].
 ### Option 2
 - Good, because [argument a]
 - Bad, because [argument b]
+

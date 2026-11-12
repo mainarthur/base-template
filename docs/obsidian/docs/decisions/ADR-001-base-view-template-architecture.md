@@ -34,3 +34,4 @@ Chosen option: **Option 1**, because:
 - Good: Fully compatible with all native Base view layouts and mobile apps.
 - Good: Preserves Obsidian's built-in popover positioning, focus management, and keyboard navigation.
 - Bad: Relies on internal Base plugin structures which require version boundary checking (`minAppVersion: 1.10.0`).
+

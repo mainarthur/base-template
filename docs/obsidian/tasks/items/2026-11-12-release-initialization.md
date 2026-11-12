@@ -22,3 +22,4 @@ Prepare the plugin repository and release metadata to satisfy all Obsidian Commu
 - [x] Write comprehensive user-facing `README.md` with usage guides and variable reference.
 - [x] Migrate memdoc vault to `docs/obsidian/` with ADR registry and atomic shards.
 - [x] Verify ESLint and TypeScript build.
+

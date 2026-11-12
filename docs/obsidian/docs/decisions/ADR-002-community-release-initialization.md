@@ -31,3 +31,4 @@ Chosen option: **Option 1**, because:
 ### Consequences
 - Good: Fully compliant with `validate-plugin-entry.yml`.
 - Good: Lean release payload (`main.js` and `manifest.json` only).
+

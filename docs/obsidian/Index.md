@@ -20,3 +20,4 @@ updated: 2026-11-12
 ## Active & Completed Task Notes
 - [[tasks/items/2026-11-06-base-view-template-setting|Implement Base View Template Setting & New Button Logic]]
 - [[tasks/items/2026-11-12-release-initialization|Prepare Base Template for Obsidian Community Plugin Release]]
+
